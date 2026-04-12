@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 public class Lever : MonoBehaviour
 {
     private bool on = false;
+    private bool playerInRange = false;
+
     private InputAction interactAction;
     [SerializeField]
     private Transform onPosition;
@@ -12,9 +14,14 @@ public class Lever : MonoBehaviour
     [SerializeField]
     private GameObject leverHandle;
 
+    [SerializeField] private GameObject interactText; 
+
+
     void Start()
     {
         this.interactAction = InputSystem.actions.FindAction("Interact");
+        interactText.SetActive(false); 
+
     }
 
     void ToggleLever()
@@ -32,10 +39,27 @@ public class Lever : MonoBehaviour
 
     void Update()
     {
-        if (this.interactAction.WasPressedThisFrame())
+        if (playerInRange && this.interactAction.WasPressedThisFrame())
         {
             this.ToggleLever();
         }
+    }
 
+      private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInRange = true;
+            interactText.SetActive(true);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInRange = false;
+            interactText.SetActive(false);
+        }
     }
 }

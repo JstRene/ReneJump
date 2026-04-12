@@ -20,3 +20,5 @@ public class Coin : MonoBehaviour
         Destroy(gameObject);
     }
 }
+//Test
+//Test2
