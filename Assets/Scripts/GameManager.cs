@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-
     #region Public Fields
 
     public GameObject ballPrefab;
@@ -127,7 +126,4 @@ public class GameManager : MonoBehaviour
         }
 
     }
-
-
-
 }

@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class RespawnTrigger : MonoBehaviour
 {
-    [SerializeField]
-    private Transform respawnPoint;
+    [SerializeField] private Transform respawnPoint;
+
+    [SerializeField] private Tracker tracker;
 
     void OnTriggerEnter(Collider other)
     {
@@ -20,5 +21,10 @@ public class RespawnTrigger : MonoBehaviour
         cc.enabled = false;
         cc.gameObject.transform.position = respawnPoint.position;
         cc.enabled = true;
+
+        if (tracker != null)
+        {
+            tracker.AddRespawn();
+        }
     }
 }

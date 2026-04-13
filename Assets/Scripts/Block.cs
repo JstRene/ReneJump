@@ -3,7 +3,6 @@ using UnityEngine;
 public class Block : MonoBehaviour
 {
     #region Public Fields
-
     public float powerupChancePerStrength = 0.01f;
 
     public GameObject powerupSprite;

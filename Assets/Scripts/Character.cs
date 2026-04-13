@@ -80,7 +80,6 @@ public class Character : MonoBehaviour
 
     void OnControllerColliderHit(ControllerColliderHit hit)
 {
-    Debug.Log("Hit: " + hit.gameObject.name + " Layer: " + hit.gameObject.layer);
     if (hit.gameObject.layer == LayerMask.NameToLayer("Platforms"))
     {
         MovingPlatform platform = hit.gameObject.GetComponent<MovingPlatform>();
@@ -107,8 +106,6 @@ public class Character : MonoBehaviour
     }
     this.platformVelocity = Vector3.zero;
     }
-
-    
 
     private void FixedUpdate()
     {
